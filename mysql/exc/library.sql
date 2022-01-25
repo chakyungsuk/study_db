@@ -1,10 +1,11 @@
 CREATE TABLE IF NOT EXISTS `library` (
   `seq` INT UNSIGNED NOT NULL,
+  `book_img` VARCHAR(45) NULL,
   `top_name` VARCHAR(45) NULL,
   `book_name` VARCHAR(45) NULL,
   `make_name` VARCHAR(45) NULL,
   `make_company` VARCHAR(45) NULL,
-  `time_month` INT NULL,
+  `time_month` DATETIME NULL,
   `price` INT NULL,
   `sale_price` INT NULL,
   `ppoint` INT NULL,
