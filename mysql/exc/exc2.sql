@@ -20,13 +20,13 @@ insert into book3 (
 name
 ,publisher_cd
 ) value (
-'이것이자바다'
-,1
+''
+,''
 );
 
 update publisher
 set
-	name='한빛미디어'
+	name=''
 where 
 	no = 1;
     
@@ -35,7 +35,7 @@ where
 insert into publisher (
 name
 ) value (
-'한빛미디어'
+'아이콕스'
 );
 
 select * from book3;
@@ -47,14 +47,8 @@ a.no
 ,a.publisher_cd
 ,b.name
 from book3 as a 
-left join publisher as b on b.seq = a.publisher_cd;
-
-select
-	a.no
-	,a.name
-	,a.publisher_cd
-	,(select name from publisher where no = a.publisher_cd)
-from book3 as a;
+left join publisher as b on b.no = a.publisher_cd;
+-- inner join publisher as b on b.no = a.publisher_cd;
 
 select
 	a.no
