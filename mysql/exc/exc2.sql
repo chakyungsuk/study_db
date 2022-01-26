@@ -49,4 +49,25 @@ a.no
 from book3 as a 
 left join publisher as b on b.seq = a.publisher_cd;
 
+select
+	a.no
+	,a.name
+	,a.publisher_cd
+	,(select name from publisher where no = a.publisher_cd)
+from book3 as a;
+
+select
+	a.no
+	,a.name
+	,a.publisher_cd
+	,(select name from publisher where no = a.publisher_cd)
+from book3 as a;
+
+select
+	a.no
+	,a.name
+	,a.publisher_cd
+	,(select name from publisher where no = a.publisher_cd) as publicsher_name
+from book3 as a;
+
 -- 테이블 조인을 해야 되면 테이블 이름에 알리아스를 넣는다. (alias)
