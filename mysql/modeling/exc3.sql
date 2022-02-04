@@ -38,6 +38,9 @@ name
 'bootstrap'
 );
 
+select * from book6;
+select * from writer;
+
 insert into writer (
 name
 ) value (
