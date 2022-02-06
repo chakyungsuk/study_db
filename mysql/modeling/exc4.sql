@@ -25,6 +25,9 @@ seq
 ,'통신사'
 );
 
+select * from codegroup;
+select * from code;
+
 insert into code (
 code
 ,name
@@ -43,5 +46,6 @@ a. seq
 ,b. code
 ,b. name
 from codegroup a
-left join code b on b.codeGroup_seq = a.seq
+left join code b 
+on b.codeGroup.seq = a.seq
 ;

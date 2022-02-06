@@ -39,21 +39,37 @@ name
 ,privacy_Cd
 ,myself
 ) values (
-'고양이'
-,'2020-01-11'
-,1
-,'cat'
-,1234
-,'are you okay?'
-,'sure'
+'늑대'
+,'2018-01-10'
+,2
+,'wolf'
+,'skjw2'
+,'my email?'
+,'chacha@naver.com'
 ,2
 ,2
 ,0000000
-,3
 ,1
 ,1
+,1
 ,3
-,'안녕하세요 저는 고양이 입니다. 고양이로써 최선을 다하겠습니다 감사합니다'
+,'아우우우우~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 );
 
 select * from infrmember;
+
+select
+a.seq as '순서'
+,a.name
+,a.id
+,a.password
+,b.emailtype_cd as 'email 종류'
+,b.email
+,c.address as '주소'
+from infrmember as a
+left join infrmember_email as b 
+on a.seq = b.infrMember_seq 
+left join infrmember_address as c
+on a.seq = c.infrMember_seq
+where b.emailtype_cd = '1';
+-- where a.name = '늑대';

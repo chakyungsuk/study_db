@@ -20,11 +20,11 @@ seq
 ,email
 ,infrMember_seq
 ) values (
-1
+4
 ,'1'
 ,'1'
-,'sdkjfkajw@naver.com'
-,'1'
+,'chacha@naver.com'
+,'3'
 );
 
 select * from infrmember_email;

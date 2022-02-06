@@ -44,3 +44,18 @@ code_seq
 
 select * from code_group;
 select * from code;
+
+delete from code
+where 1=1
+	and name = ''; 
+    
+SET sql_safe_updates = 0;
+
+select
+a.cg_seq as '순서'
+,a.name
+,b.name as '구분'
+from code_group as a  -- from 첫번째 테이블
+left join code as b   -- left join 2번째 테이블
+on a.cg_seq = b.cg_seq ;-- 조건처리 (같은항목)
+-- where a.name = '국적';
