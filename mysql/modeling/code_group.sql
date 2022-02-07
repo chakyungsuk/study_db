@@ -36,8 +36,8 @@ code_seq
 ,name
 ,cg_seq
 ) values (
-'5'
-,'사무'
+'6'
+,'기타'
 ,'infra014'
 );
 
@@ -54,6 +54,7 @@ SET sql_safe_updates = 0;
 select
 a.cg_seq as '순서'
 ,a.name
+,b.code_seq as '순서'
 ,b.name as '구분'
 from code_group as a  -- from 첫번째 테이블
 left join code as b   -- left join 2번째 테이블
