@@ -65,11 +65,30 @@ a.seq as '순서'
 ,a.password
 ,b.emailtype_cd as 'email 종류'
 ,b.email
+,b.default_ny '대표'
 ,c.address as '주소'
+,d.p_number as '핸드폰 번호'
+,d.f_number as 'fax 번호'
+,e.hobby_cd as '취미'
+,f.projecttype as '프로젝트명'
+,f.project_start as '프로젝트 시작'
+,f.project_end as '프로젝트 끝'
+,f.projectrole as '프로젝트 역할'
+,f.ordercompany as '발주사'
+,g.commender_name as '추천인'
+,h.snstype_cd as 'sns타입'
+,h.url as 'sns'
+,i.jobtype_cd as '희망직업종류'
+,i.job as '직업이름'
+,a.myself as '자기소개'
 from infrmember as a
-left join infrmember_email as b 
-on a.seq = b.infrMember_seq 
-left join infrmember_address as c
-on a.seq = c.infrMember_seq
-where b.emailtype_cd = '1';
--- where a.name = '늑대';
+left join infrmember_email as b on a.seq = b.infrMember_seq 
+left join infrmember_address as c on a.seq = c.infrMember_seq
+left join infrmember_mobile as d on a.seq = d.infrMember_seq
+left join infrmember_hobby as e on a.seq = e.infrMember_seq
+left join infrmember_project as f on a.seq = f.infrMember_seq
+left join infrmember_commender as g on a.seq = g.infrMember_seq
+left join infrmember_sns as h on a. seq = h.infrMember_seq
+left join infrmember_job as i on a.seq = i.infrMember_seq
+-- where b.emailtype_cd = '1';
+-- where a.id = 'dog' ;
