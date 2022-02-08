@@ -92,12 +92,13 @@ insert into test (
 	,1111
 );
 
+select * from test; 
 
 -- 데이터 수정
 update test set 
 	name = 'Andrew'
     ,tel = 123
-where 1=1 
+where 1=1 	
 	and seq = 1;
 
 -- select * from test;
