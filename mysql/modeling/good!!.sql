@@ -43,14 +43,14 @@ INSERT INTO `nct`.`infrcode`
 `ifcgSeq`)
 VALUES
 (
-'내 별명은?',
+'조회',
 2,
 0,
 now(),
 now(),
 now(),
 now(),
-14);
+1);
 
 select * from infrcode;
 
