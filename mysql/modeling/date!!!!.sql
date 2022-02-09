@@ -468,14 +468,14 @@ VALUES
 1,
 1,
 1,
-'www.naver.com',
+'www.google.com',
 '개인홈피',
 0,
 now(),
 now(),
 now(),
 now(),
-1);
+3);
 
 
 CREATE TABLE IF NOT EXISTS `infrMemberAddress` (
@@ -516,7 +516,6 @@ INSERT INTO `nct`.`infrmemberaddress`
 `ifmaTitle`,
 `ifmaAddress1`,
 `ifmaAddress2`,
-`ifmaZipcode`,
 `ifmaDelNy`,
 `regDateTime`,
 `regDateTimeSvr`,
@@ -525,16 +524,180 @@ INSERT INTO `nct`.`infrmemberaddress`
 `ifmmSeq`)
 VALUES
 (
-<{ifmaDefaultNy: }>,
-<{ifmaTypeCd: }>,
-<{ifmaTitle: }>,
-<{ifmaAddress1: }>,
-<{ifmaAddress2: }>,
-<{ifmaZipcode: }>,
-<{ifmaDelNy: }>,
-<{regDateTime: }>,
-<{regDateTimeSvr: }>,
-<{modDateTime: }>,
-<{modDateTimeSvr: }>,
-<{ifmmSeq: }>);
+1,
+1,
+'본가',
+'서울특별시 강남구',
+'',
+0,
+now(),
+now(),
+now(),
+now(),
+3
+);
 
+select
+a.ifcgSeq
+, a.ifcgName
+, b.ifcdSeq
+, b.ifcdName
+, b.ifcdOrder
+from infrCodeGroup a
+	left join infrCode b on b.ifcgSeq = a.ifcgSeq
+order by a.ifcgSeq, b.ifcdOrder; 
+
+select * from infrmemberemail;  
+
+INSERT INTO `nct`.`infrmemberemail`
+(
+`ifmeDefaultNy`,
+`ifmeTypeCd`,
+`ifmeEmailFull`,
+`ifmeEmailAccount`,
+`ifmeEmailDomainCd`,
+`ifmeDelNy`,
+`regDateTime`,
+`regDateTimeSvr`,
+`modDateTime`,
+`modDateTimeSvr`,
+`ifmmSeq`)
+VALUES
+(
+1,
+1,
+'binbin@naver.com',
+'bin',
+1,
+0,
+now(),
+now(),
+now(),
+now(),
+3
+);
+
+INSERT INTO `nct`.`infrmemberhobby`
+(
+`ifmhHobbyCd`,
+`ifmhUseNy`,
+`ifmhOrder`,
+`ifmhDelNy`,
+`regDateTime`,
+`regDateTimeSvr`,
+`modDateTime`,
+`modDateTimeSvr`,
+`ifmmSeq`)
+VALUES
+(
+4,
+1,
+3,
+0,
+now(),
+now(),
+now(),
+now(),
+3
+);
+
+select * from infrmemberhobby;
+
+INSERT INTO `nct`.`infrmemberjoinqna`
+(
+`ifjqQuestionCd`,
+`ifjqAnswer`,
+`ifjqDelNy`,
+`regDateTime`,
+`regDateTimeSvr`,
+`modDateTime`,
+`modDateTimeSvr`,
+`ifmmSeq`)
+VALUES
+(
+1,
+'나는 원빈이다.',
+0,
+now(),
+now(),
+now(),
+now(),
+3
+);
+
+select * from infrmembernationality;
+
+INSERT INTO `nct`.`infrmembernationality`
+(
+`ifmnDelNy`,
+`ifnaSeq`,
+`ifmaSeq`,
+`regDateTime`,
+`regDateTimeSvr`,
+`modDateTime`,
+`modDateTimeSvr`)
+VALUES
+(
+0,
+1,
+2,
+now(),
+now(),
+now(),
+now()
+);
+
+CREATE TABLE IF NOT EXISTS `infrMemberNationality` (
+  `ifmnSeq` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ifmnDelNy` TINYINT NOT NULL,
+  `ifnaSeq` BIGINT UNSIGNED NOT NULL,
+  `ifmaSeq` BIGINT UNSIGNED NOT NULL,
+  `regIp` VARCHAR(100) NULL,
+  `regSeq` BIGINT NULL,
+  `regDevise` TINYINT NULL,
+  `regDateTime` DATETIME NULL,
+  `regDateTimeSvr` DATETIME NULL,
+  `modIp` VARCHAR(100) NULL,
+  `modSeq` BIGINT NULL,
+  `modDevise` TINYINT NULL,
+  `modDateTime` DATETIME NULL,
+  `modDateTimeSvr` DATETIME NULL,
+  PRIMARY KEY (`ifmnSeq`),
+  INDEX `fk_infrMemberNationality_infrNationality1_idx` (`ifnaSeq` ASC) VISIBLE,
+  INDEX `fk_infrMemberNationality_infrMemberAddress1_idx` (`ifmaSeq` ASC) VISIBLE,
+  CONSTRAINT `fk_infrMemberNationality_infrNationality1`
+    FOREIGN KEY (`ifnaSeq`)
+    REFERENCES `infrNationality` (`ifnaSeq`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_infrMemberNationality_infrMemberAddress1`
+    FOREIGN KEY (`ifmaSeq`)
+    REFERENCES `infrMemberAddress` (`ifmaSeq`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_unicode_ci;
+
+select
+a.ifmmName
+, a.ifmmId
+, b.ifmaTitle
+, b.ifmaAddress1
+, c.ifaoUrl
+, c.ifaoDefaultNy
+, c.ifaoTypeCd
+from infrmember a 
+left join infrmemberaddress b on b.ifmmSeq = a.ifmmSeq
+left join infrmemberaddressonline c on c.ifmmSeq = a.ifmmSeq
+where 1=1
+	and c.ifaoDefaultNy = 1;
+
+select * from infrmemberaddressonline;
+
+update infrmemberaddressonline
+	set ifaoDefaultNy = 2
+where 1=1 
+	and ifaoSeq = 3;
+	
+	

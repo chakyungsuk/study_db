@@ -100,6 +100,10 @@ update test set
     ,tel = 123
 where 1=1 	
 	and seq = 1;
+    
+update infrcodegroup
+	set ifcgUseNy = 1
+where ifcgSeq > 100;
 
 -- select * from test;
 
@@ -114,3 +118,20 @@ truncate test;
 -- DDL : data definition language : db, table 컨트롤 : 주로 관리자, 선임들의 업무
 -- DML : data manipulation language : data : 후임들
 -- DCL : data control language : 접근 권한, 커밋/롤백
+
+-- join
+select
+a.
+,b.
+from (첫번째) a
+	left join (붙여올것) b on a.(첫번쨰) = b.(두번째);
+
+-- 조인 한것 따로 찾기
+where 1=1 
+	and a.(보고싶은거) = 1;
+
+-- 조인 한것 정렬 방법
+order by -- 정렬
+	a.(정렬할것) asc -- 내림차순
+    , b.(정렬할것); desc -- 역차순
+    
