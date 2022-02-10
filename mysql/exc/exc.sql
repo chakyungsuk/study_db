@@ -135,3 +135,6 @@ order by -- 정렬
 	a.(정렬할것) asc -- 내림차순
     , b.(정렬할것); desc -- 역차순
     
+-- 항목 붙이기
+concat(substring(1,3)) as sdfaf
+    

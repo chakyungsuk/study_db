@@ -54,6 +54,8 @@ now(),
 
 select * from infrcode;
 
+use nct;
+
 select
 a.ifcgSeq
 , a.ifcgName
@@ -62,7 +64,7 @@ a.ifcgSeq
 , b.ifcdOrder
 from infrCodeGroup a
 	left join infrCode b on b.ifcgSeq = a.ifcgSeq
-order by a.ifcgSeq, b.ifcdOrder;    
+order by a.ifcgSeq, b.infrCode, b.ifcdOrder;    
 
 update infrCode 
 set ifcgSeq = 1
@@ -102,4 +104,6 @@ now()
 select * from infrnationality;
 
 desc infrnationality;
+
+
     
