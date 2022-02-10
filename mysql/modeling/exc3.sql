@@ -1,86 +1,46 @@
 use world;
 
-CREATE TABLE IF NOT EXISTS `book6` (
-  `seq` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `book4` (
+  `no` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
-  PRIMARY KEY (`seq`))
+  PRIMARY KEY (`no`))
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `writer` (
-  `seq` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NULL,
-  PRIMARY KEY (`seq`))
-ENGINE = InnoDB;
-
-CREATE TABLE IF NOT EXISTS `book6_writer` (
-  `seq` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `book6_seq` INT UNSIGNED NOT NULL,
-  `writer_seq` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`seq`),
-  INDEX `fk_book6_writer_book61_idx` (`book6_seq` ASC) VISIBLE,
-  INDEX `fk_book6_writer_writer1_idx` (`writer_seq` ASC) VISIBLE,
-  CONSTRAINT `fk_book6_writer_book61`
-    FOREIGN KEY (`book6_seq`)
-    REFERENCES `book6` (`seq`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_book6_writer_writer1`
-    FOREIGN KEY (`writer_seq`)
-    REFERENCES `writer` (`seq`)
+CREATE TABLE IF NOT EXISTS `review4` (
+  `no` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `comment` VARCHAR(45) NULL,
+  `book4_no` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`no`),
+  INDEX `fk_review_book4_idx` (`book4_no` ASC) VISIBLE,
+  CONSTRAINT `fk_review_book4`
+    FOREIGN KEY (`book4_no`)
+    REFERENCES `book4` (`no`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+desc book4;
 
-insert into book6 (
+insert into book4 (
 name
-) value (
-'bootstrap'
+) values (
+'5차산업혁명의미래'
 );
 
-select * from book6;
-select * from writer;
+select * from book4;
 
-insert into writer (
-name
-) value (
-'고소영'
+insert into review4 (
+comment
+,book4_no
+) values (
+'우와 책 재미 있습니다~'
+,1
 );
 
-insert into book6_writer (
-book6_seq
-,writer_seq
-) value (
-3
-,4
-);
+truncate review4;
 
-select * from book6;
+select * from review4;
 
-select * from writer;
-
-select * from book6_writer;
-
-select
-a.seq
-,a.name
-,b.writer_seq
-,(select name from writer c where c.seq = b.writer_seq) as name
-from book6 a
-left join book6_writer b on b.book6_seq = a.seq
-;
-
-select 
-a.seq
-,a.name
-,b.writer_seq
-,c.name as writer_name
-from book6 as a 
-left join book6_writer as b on b.book6_seq = a.seq 
-left join writer as c on b.writer_seq = c.seq
-;
-
-update writer set 
-	name = '차경석'
-where 1=1 
-	and seq = 1;
+-- 공통코드, 코드성 데이터 참조 
+-- 데이터가 1개이상인 코드 
+-- 데이터가 1개이상인 코드 인데 코드성 데이터 참조일때
