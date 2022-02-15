@@ -547,7 +547,7 @@ from infrCodeGroup a
 	left join infrCode b on b.ifcgSeq = a.ifcgSeq
 order by a.ifcgSeq, b.ifcdOrder; 
 
-select * from infrmemberemail;  
+select * from infrcodegroup;  
 
 INSERT INTO `nct`.`infrmemberemail`
 (

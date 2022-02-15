@@ -236,7 +236,7 @@ select
     , a.ifmuSeq
     , (select ifmuName from infrmenu where ifmuSeq = a.ifmuSeq) as ifmuname
     , a.ifauRoleCd
-    , (select ifcdName from infrcode where ifcdSeq = a.ifauRoleCd) as a
+    , (select ifcdName from infrcode where ifcdSeq = a.ifauRoleCd) as 권한
 from infrauthmenu a
 	where 1=1
 		and a.ifatSeq = 1

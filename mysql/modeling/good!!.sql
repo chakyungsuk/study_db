@@ -106,4 +106,5 @@ select * from infrnationality;
 desc infrnationality;
 
 
+select * from infrauthmember;
     
